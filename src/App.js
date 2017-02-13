@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import logo from './logo.svg';
 import './App.css';
+
+const mapStateToProps = state => ({
+})
 
 class App extends Component {
   constructor(){
     super()
 
 this.state = {
-      name: ''
+      username: ''
 }
 this.handleSubmit = event => {
       event.preventDefault()
   this.setState({
-    name: this.state.name
+    username: this.state.username
   })
 }
   }
@@ -26,20 +30,21 @@ this.handleSubmit = event => {
 
         <form>
         <input onSubmit={this.handleSubmit}
-          value={this.state.name}
+          value={this.state.username}
           type="text"
           onChange={
             event => this.setState({
-              name: event.target.value
+              username: event.target.value
             })
           }
         />
           <button type="submit">Go!</button>
         </form>
-        <h3>{this.state.name}</h3>
+        <h3>{this.state.username}</h3>
+
       </div>
     );
   }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
