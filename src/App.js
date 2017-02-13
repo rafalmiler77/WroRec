@@ -4,6 +4,10 @@ import logo from './logo.svg';
 import './App.css';
 
 const mapStateToProps = state => ({
+  username: state.usernameData.username
+})
+const mapDispatchToProps = dispatch => ({
+  addUsername: (username) => dispatch({type: 'ADD_USERNAME', username: username})
 })
 
 class App extends Component {
@@ -18,6 +22,7 @@ this.handleSubmit = event => {
   this.setState({
     username: this.state.username
   })
+  this.props.addUsername(this.state.username)
 }
   }
     render() {
@@ -28,8 +33,8 @@ this.handleSubmit = event => {
           <h2>Welcome to React</h2>
         </div>
 
-        <form>
-        <input onSubmit={this.handleSubmit}
+        <form onSubmit={this.handleSubmit}>
+        <input
           value={this.state.username}
           type="text"
           onChange={
@@ -47,4 +52,4 @@ this.handleSubmit = event => {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);
