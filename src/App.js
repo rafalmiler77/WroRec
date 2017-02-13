@@ -4,7 +4,8 @@ import logo from './logo.svg';
 import './App.css';
 
 const mapStateToProps = state => ({
-  username: state.usernameData.username
+  username: state.usernameData.username,
+  contacts: state.usernameData.contacts
 })
 const mapDispatchToProps = dispatch => ({
   addUsername: (username) => dispatch({type: 'ADD_USERNAME', username: username})

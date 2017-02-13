@@ -2,7 +2,8 @@
  * Created by rafael on 13.02.17.
  */
 const initialState = {
-  username: ''
+  username: '',
+  users: []
 }
 
 export default (state = initialState, action) => {
@@ -10,7 +11,9 @@ export default (state = initialState, action) => {
     case 'ADD_USERNAME':
       return {
         ...state,
-        username: action.username
+        username: action.username,
+        users: state.users.concat([{username:action.username}])
+
       }
     default:
       return state
