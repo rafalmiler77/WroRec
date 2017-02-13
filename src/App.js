@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { FetchUsername } from './fetchUsername'
 import logo from './logo.svg';
 import './App.css';
 
 const mapStateToProps = state => ({
-  username: state.usernameData.username,
+  inputValue: state.usernameData.inputValue,
   contacts: state.usernameData.contacts
 })
 const mapDispatchToProps = dispatch => ({
-  addUsername: (username) => dispatch({type: 'ADD_USERNAME', username: username})
+  addInputValue: (username) => dispatch({type: 'ADD_INPUT_VALUE', inputValue: username})
 })
 
 class App extends Component {
@@ -16,15 +17,15 @@ class App extends Component {
     super()
 
 this.state = {
-      username: ''
+      inputValue: '',
 }
-this.handleSubmit = event => {
+    this.handleSubmit = event => {
       event.preventDefault()
-  this.setState({
-    username: this.state.username
-  })
-  this.props.addUsername(this.state.username)
-}
+      this.setState({
+        inputValue: this.state.inputValue
+      })
+      // this.props.addInputValue(this.state.inputValue)
+    }
   }
     render() {
     return (
@@ -36,18 +37,21 @@ this.handleSubmit = event => {
 
         <form onSubmit={this.handleSubmit}>
         <input
-          value={this.state.username}
+          value={this.state.inputValue}
           type="text"
           onChange={
-            event => this.setState({
-              username: event.target.value
-            })
+            event => {
+              this.setState({
+                inputValue: event.target.value
+              })
+              this.props.addInputValue(this.state.inputValue)
+            }
           }
         />
           <button type="submit">Go!</button>
         </form>
-        <h3>{this.state.username}</h3>
-
+        <h3>{this.state.inputValue}</h3>
+        <FetchUsername/>
       </div>
     );
   }
