@@ -1,7 +1,7 @@
 /**
  * Created by rafael on 13.02.17.
  */
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux'
 
 const mapStateToProps = state => ({
@@ -9,50 +9,44 @@ const mapStateToProps = state => ({
   users: state.usernameData.users
 })
 
-class DisplayUserDetails extends Component {
+const DisplayUserDetails = props => (
+  <div>
+    <p>props.inputValue: {props.inputValue}</p>
 
-  render() {
-    return (
-      <div>
-        <div>
-          <p>this.props.inputValue: {this.props.inputValue}</p>
+    <p>Login: {props.users[0] ?
+      props.users[props.users.length - 1].login : ''}
+    </p>
 
-          <p>Login: {this.props.users[0] ?
-            this.props.users[this.props.users.length-1].login : ''}
-            </p>
+    <p>Name: {(props.users[0] && props.users[props.users.length - 1].name !== null) ?
+      props.users[props.users.length - 1].name :
+      'none'}
+    </p>
 
-          <p>Name: {(this.props.users[0] && this.props.users[this.props.users.length-1].name !== null) ?
-            this.props.users[this.props.users.length-1].name :
-            'none'}
-          </p>
+    <p>Company: {(props.users[0] && props.users[props.users.length - 1].company !== null) ?
+      props.users[props.users.length - 1].company :
+      'none'}
+    </p>
 
-          <p>Company: {(this.props.users[0] && this.props.users[this.props.users.length-1].company !== null) ?
-            this.props.users[this.props.users.length-1].company :
-            'none'}
-          </p>
+    <p>E-mail: {(props.users[0] && props.users[props.users.length - 1].email !== null) ?
+      props.users[props.users.length - 1].email :
+      'none'}
+    </p>
 
-          <p>E-mail: {(this.props.users[0] && this.props.users[this.props.users.length-1].email !== null) ?
-            this.props.users[this.props.users.length-1].email :
-            'none'}
-          </p>
+    <p>Gravatar: {(props.users[0] && props.users[props.users.length - 1].gravatar_id !== '') ?
+      props.users[props.users.length - 1].gravatar_id :
+      'none'}
+    </p>
 
-          <p>Gravatar: {(this.props.users[0] && this.props.users[this.props.users.length-1].gravatar_id !== '') ?
-            this.props.users[this.props.users.length-1].gravatar_id :
-            'none'}
-          </p>
+    <p>Followers: {(props.users[0] && props.users[props.users.length - 1].followers !== null) ?
+      props.users[props.users.length - 1].followers :
+      'none'}
+    </p>
 
-          <p>Followers: {(this.props.users[0] && this.props.users[this.props.users.length-1].followers !== null) ?
-            this.props.users[this.props.users.length-1].followers :
-            'none'}
-          </p>
+    <p>Following: {(props.users[0] && props.users[props.users.length - 1].following !== null) ?
+      props.users[props.users.length - 1].following :
+      'none'}
+    </p>
+  </div>
+)
 
-          <p>Following: {(this.props.users[0] && this.props.users[this.props.users.length-1].following !== null) ?
-            this.props.users[this.props.users.length-1].following :
-            'none'}
-          </p>
-        </div>
-      </div>
-    )
-  }
-}
 export default connect(mapStateToProps)(DisplayUserDetails)
