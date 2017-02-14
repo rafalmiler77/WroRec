@@ -2,26 +2,26 @@
  * Created by rafael on 13.02.17.
  */
 import React from 'react';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
   inputValue: state.usernameData.inputValue,
-  users: state.usernameData.users
-})
+  users: state.usernameData.users,
+});
 
 const DisplayUserDetails = props => (
   <div>
     {
       (props.users !== null && props.inputValue !== null) ?
         props.users.filter(
-          user => user.login === props.inputValue
+          user => user.login === props.inputValue,
         ).map(
           detail =>
             <div key={detail}>
               <h3>Details of a user:</h3>
               <p>Login: {detail.login}</p>
-              <p>Name: {detail.name !== null ? detail.name : "None"}</p>
-              <p>Company: {detail.company !== null ? detail.company : "None"}</p>
+              <p>Name: {detail.name !== null ? detail.name : 'None'}</p>
+              <p>Company: {detail.company !== null ? detail.company : 'None'}</p>
               <p>E-mail: {detail.email !== null ? detail.email : 'None'}</p>
               <p>Gravatar: {detail.gravatar_id !== '' ? detail.gravatar_id : 'None'}</p>
               <p>Followers: {detail.followers}</p>
@@ -39,7 +39,7 @@ const DisplayUserDetails = props => (
         </div>
     }
   </div>
-)
+);
 
-export default connect(mapStateToProps)(DisplayUserDetails)
+export default connect(mapStateToProps)(DisplayUserDetails);
 

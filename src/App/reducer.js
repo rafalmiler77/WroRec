@@ -3,8 +3,8 @@
  */
 const initialState = {
   inputValue: '',
-  users: []
-}
+  users: [],
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -12,13 +12,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         inputValue: action.inputValue,
-      }
+      };
     case 'ADD_USER':
       return {
         ...state,
-        users: state.users.concat(action.user)
-      }
+        users: state.users.concat(action.user),
+      };
     default:
-      return state
+      return state;
   }
-}
+};
