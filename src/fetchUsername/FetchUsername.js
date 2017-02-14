@@ -1,10 +1,10 @@
 /**
  * Created by rafael on 13.02.17.
  */
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import React, {Component} from 'react';
+import {connect} from 'react-redux'
 
-const mapStateToProps = state =>({
+const mapStateToProps = state => ({
   inputValue: state.usernameData.inputValue
 })
 const mapDispatchToProps = dispatch => ({
@@ -12,35 +12,37 @@ const mapDispatchToProps = dispatch => ({
 })
 
 class FetchUsername extends Component {
-constructor(){
-  super()
+  constructor() {
+    super()
 
-  this.state = {
-   githubUser: ''
+    this.state = {
+      githubUser: ''
+    }
+    this.handleSubmit2 = () => {
+      fetch(
+        "https://api.github.com/users/" + this.props.inputValue
+      ).then(
+        response => response.json()
+      ).then(
+        data => {
+          this.setState({
+            githubUser: data
+          })
+          this.props.addUser(this.state.githubUser)
+        }
+      )
+    }
   }
-  this.handleSubmit2 =() => {
-    fetch(
-      "https://api.github.com/users/octocat"
-    ).then(
-      response => response.json()
-    ).then(
-      data => {
-        this.setState({
-          githubUser: data
-        })
-        this.props.addUser(this.state.githubUser)
-      }
-    )
-  }
-
-}
 
   render() {
     return (
       <div>
         <button onClick={this.handleSubmit2} type="submit">Fetch users2!</button>
-        <button onClick={this.handleSubmit3} type="submit">Fetch users3!</button>
         <div>
+          {this.state.githubUser.login !== null ?
+            <p>Login: {this.state.githubUser.login}</p> :
+            <p>Login: none</p>
+          }
           {this.state.githubUser.name !== null ?
             <p>Name: {this.state.githubUser.name}</p> :
             <p>Name: none</p>
@@ -57,11 +59,11 @@ constructor(){
             <p>Gravatar: {this.state.githubUser.gravatar_id}</p> :
             <p>Gravatar: none</p>
           }
-            <p>Followers: {this.state.githubUser.followers}</p>
-            <p>Following: {this.state.githubUser.following}</p>
+          <p>Followers: {this.state.githubUser.followers}</p>
+          <p>Following: {this.state.githubUser.following}</p>
         </div>
       </div>
     )
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(FetchUsername)
+export default connect(mapStateToProps, mapDispatchToProps)(FetchUsername)
