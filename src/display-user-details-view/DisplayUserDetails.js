@@ -11,42 +11,33 @@ const mapStateToProps = state => ({
 
 const DisplayUserDetails = props => (
   <div>
-    <p>props.inputValue: {props.inputValue}</p>
-
-    <p>Login: {props.users[0] ?
-      props.users[props.users.length - 1].login : ''}
-    </p>
-
-    <p>Name: {(props.users[0] && props.users[props.users.length - 1].name !== null) ?
-      props.users[props.users.length - 1].name :
-      'none'}
-    </p>
-
-    <p>Company: {(props.users[0] && props.users[props.users.length - 1].company !== null) ?
-      props.users[props.users.length - 1].company :
-      'none'}
-    </p>
-
-    <p>E-mail: {(props.users[0] && props.users[props.users.length - 1].email !== null) ?
-      props.users[props.users.length - 1].email :
-      'none'}
-    </p>
-
-    <p>Gravatar: {(props.users[0] && props.users[props.users.length - 1].gravatar_id !== '') ?
-      props.users[props.users.length - 1].gravatar_id :
-      'none'}
-    </p>
-
-    <p>Followers: {(props.users[0] && props.users[props.users.length - 1].followers !== null) ?
-      props.users[props.users.length - 1].followers :
-      'none'}
-    </p>
-
-    <p>Following: {(props.users[0] && props.users[props.users.length - 1].following !== null) ?
-      props.users[props.users.length - 1].following :
-      'none'}
-    </p>
+    {
+      (props.users !== null && props.inputValue !== null) ?
+        props.users.filter(
+          user => user.login === props.inputValue
+        ).map(
+          detail =>
+            <div key={detail}>
+              <p>Login: {detail.login}</p>
+              <p>Name: {detail.name !== null ? detail.name : "None"}</p>
+              <p>Company: {detail.company !== null ? detail.company : "None"}</p>
+              <p>E-mail: {detail.email !== null ? detail.email : 'None'}</p>
+              <p>Gravatar: {detail.gravatar_id !== '' ? detail.gravatar_id : 'None'}</p>
+              <p>Followers: {detail.followers}</p>
+              <p>Following: {detail.following}</p>
+            </div>) :
+        <div>
+          <p>Login: </p>
+          <p>Name: </p>
+          <p>Company: </p>
+          <p>E-mail: </p>
+          <p>Gravatar: </p>
+          <p>Followers: </p>
+          <p>Following: </p>
+        </div>
+    }
   </div>
 )
 
 export default connect(mapStateToProps)(DisplayUserDetails)
+
