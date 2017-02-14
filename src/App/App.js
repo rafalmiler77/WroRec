@@ -23,17 +23,17 @@ class App extends Component {
     this.handleOnChange = (actualInput) => {
       (this.props.users !== null &&
       (this.props.users.find(
-          user => user.login === actualInput))) ?
+        user => user.login === actualInput))) ?
         alert('This one exists') :
-      fetch(
-        "https://api.github.com/users/" + actualInput
-      ).then(
-        response => response.json()
-      ).then(
-        data => {
-          this.props.addUser(data)
-        }
-      )
+        fetch(
+          "https://api.github.com/users/" + actualInput
+        ).then(
+          response => response.json()
+        ).then(
+          data => {
+            this.props.addUser(data)
+          }
+        )
     }
   }
 
@@ -44,7 +44,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo"/>
           <h2>Welcome to React</h2>
         </div>
-
+        <h3>Input a login of a GitHub user:</h3>
         <form>
           <input
             value={this.state.inputValue}

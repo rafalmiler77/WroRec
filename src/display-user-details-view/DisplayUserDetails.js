@@ -18,6 +18,7 @@ const DisplayUserDetails = props => (
         ).map(
           detail =>
             <div key={detail}>
+              <h3>Details of a user:</h3>
               <p>Login: {detail.login}</p>
               <p>Name: {detail.name !== null ? detail.name : "None"}</p>
               <p>Company: {detail.company !== null ? detail.company : "None"}</p>
@@ -27,6 +28,7 @@ const DisplayUserDetails = props => (
               <p>Following: {detail.following}</p>
             </div>) :
         <div>
+          <h3>Details of a user:</h3>
           <p>Login: </p>
           <p>Name: </p>
           <p>Company: </p>
