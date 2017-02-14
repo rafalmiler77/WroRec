@@ -60,7 +60,7 @@ class App extends Component {
             }
           />
         </form>
-        <h3>{this.state.inputValue}</h3>
+
         <DisplayUserDetails/>
       </div>
     );
