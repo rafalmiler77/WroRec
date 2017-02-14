@@ -6,7 +6,7 @@ import './App.css';
 
 const mapStateToProps = state => ({
   inputValue: state.usernameData.inputValue,
-  contacts: state.usernameData.contacts
+  users: state.usernameData.users
 })
 const mapDispatchToProps = dispatch => ({
   addInputValue: (username) => dispatch({type: 'ADD_INPUT_VALUE', inputValue: username}),
