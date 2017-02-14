@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {FetchUsername} from './fetchUsername'
+import {DisplayUserDetails} from './display-user-details-view'
 import logo from './logo.svg';
 import './App.css';
 
@@ -20,17 +20,14 @@ class App extends Component {
     this.state = {
       inputValue: '',
     }
-    this.handleOnChange5 = (actualInput) => {
+    this.handleOnChange = (actualInput) => {
       fetch(
         "https://api.github.com/users/" + actualInput
       ).then(
         response => response.json()
       ).then(
         data => {
-          this.setState({
-            githubUser: data
-          })
-          this.props.addUser(this.state.githubUser)
+          this.props.addUser(data)
         }
       )
     }
@@ -54,13 +51,13 @@ class App extends Component {
                   inputValue: event.target.value
                 })
                 this.props.addInputValue(event.target.value)
-                this.handleOnChange5(event.target.value)
+                this.handleOnChange(event.target.value)
               }
             }
           />
         </form>
         <h3>{this.state.inputValue}</h3>
-        <FetchUsername/>
+        <DisplayUserDetails/>
       </div>
     );
   }

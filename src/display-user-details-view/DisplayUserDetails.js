@@ -8,18 +8,8 @@ const mapStateToProps = state => ({
   inputValue: state.usernameData.inputValue,
   users: state.usernameData.users
 })
-const mapDispatchToProps = dispatch => ({
-  addUser: (user) => dispatch({type: 'ADD_USER', user: user})
-})
 
-class FetchUsername extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      githubUser: ''
-    }
-  }
+class DisplayUserDetails extends Component {
 
   render() {
     return (
@@ -66,4 +56,4 @@ class FetchUsername extends Component {
     )
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(FetchUsername)
+export default connect(mapStateToProps)(DisplayUserDetails)
