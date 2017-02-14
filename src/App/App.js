@@ -21,6 +21,10 @@ class App extends Component {
       inputValue: '',
     }
     this.handleOnChange = (actualInput) => {
+      (this.props.users !== null &&
+      (this.props.users.find(
+          user => user.login === actualInput))) ?
+        alert('This one exists') :
       fetch(
         "https://api.github.com/users/" + actualInput
       ).then(
