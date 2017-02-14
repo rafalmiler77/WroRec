@@ -4,7 +4,7 @@
 import {createStore, combineReducers} from 'redux'
 import {compose, applyMiddleware} from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import {reducer as displayUserDetailsReducer} from './display-user-details-view'
+import {reducer as displayUserDetailsReducer} from './App'
 
 const reducer = combineReducers({
   usernameData: displayUserDetailsReducer
