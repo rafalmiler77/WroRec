@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
-import {DisplayUserDetails} from './display-user-details-view'
-import logo from './logo.svg';
+import {DisplayUserDetails} from '../display-user-details-view'
+import logo from '../logo.svg';
 import './App.css';
 
 const mapStateToProps = state => ({

@@ -50,7 +50,6 @@ class DisplayUserDetails extends Component {
             this.props.users[this.props.users.length-1].following :
             'none'}
           </p>
-
         </div>
       </div>
     )
