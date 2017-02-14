@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {DisplayUserDetails} from '../display-user-details-view'
-import logo from '../logo.svg';
 import './App.css';
 
 const mapStateToProps = state => ({
@@ -33,17 +32,16 @@ class App extends Component {
           data => {
             this.props.addUser(data)
           }
+        ).catch(
+          error => console.error(error)
         )
     }
   }
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <h2>Welcome to React</h2>
-        </div>
+      <div>
+        <h1>A connection to Github API in React</h1>
         <h3>Input a login of a GitHub user:</h3>
         <form>
           <input
