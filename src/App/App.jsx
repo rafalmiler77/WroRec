@@ -7,12 +7,12 @@ import './App.css';
 const mapStateToProps = state => ({
   inputValue: state.usernameData.inputValue,
   users: state.usernameData.users,
-  userExists: state.usernameData.userExists,
+  alreadyFetchedUser: state.usernameData.alreadyFetchedUser,
 });
 const mapDispatchToProps = dispatch => ({
   addInputValue: username => dispatch({ type: 'ADD_INPUT_VALUE', inputValue: username }),
   addUser: user => dispatch({ type: 'ADD_USER', user }),
-  informAboutExistingUser: exisitingUser => dispatch({ type: 'ADD_EXISTING_USER', exisitingUser }),
+  informAboutAlreadyFetchedUser: exisitingUser => dispatch({ type: 'ADD_EXISTING_USER', exisitingUser }),
 });
 
 class App extends Component {
@@ -30,7 +30,7 @@ class App extends Component {
       (this.props.users !== null &&
         (this.props.users.find(
           user => user.login === actualInput))) ?
-           this.props.informAboutExistingUser(actualInput)
+           this.props.informAboutAlreadyFetchedUser(actualInput)
         :
       searchTimeout = setTimeout(fetchUsers, 1000, actualInput);
     };
@@ -85,7 +85,7 @@ class App extends Component {
 App.propTypes = {
   users: React.PropTypes.array.isRequired,
   addUser: React.PropTypes.func.isRequired,
-  informAboutExistingUser: React.PropTypes.func.isRequired,
+  informAboutAlreadyFetchedUser: React.PropTypes.func.isRequired,
   addInputValue: React.PropTypes.func.isRequired,
 };
 

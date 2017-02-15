@@ -4,7 +4,7 @@
 const initialState = {
   inputValue: '',
   users: [],
-  userExists: '',
+  alreadyFetchedUser: '',
 };
 
 export default (state = initialState, action) => {
@@ -22,8 +22,8 @@ export default (state = initialState, action) => {
     case 'ADD_EXISTING_USER':
       return {
         ...state,
-        userExists: action.exisitingUser,
-      }
+        alreadyFetchedUser: action.exisitingUser,
+      };
     default:
       return state;
   }
