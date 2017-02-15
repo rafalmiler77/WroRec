@@ -11,8 +11,10 @@ const mapStateToProps = state => ({
 
 const DisplayUserDetails = props => (
   <div>
+    {console.log('props.users',props.users,'props.inputValue',props.inputValue)}
+
     {
-      (props.users !== null && props.inputValue !== null) ?
+      (props.users !== [] && props.inputValue !== '') ?
         props.users.filter(
           user => user.login === props.inputValue,
         ).map(
@@ -41,7 +43,7 @@ const DisplayUserDetails = props => (
   </div>
 );
 DisplayUserDetails.propTypes = {
-  users: React.PropTypes.string.isRequired,
+  users: React.PropTypes.array.isRequired,
   inputValue: React.PropTypes.string.isRequired,
 };
 export default connect(mapStateToProps)(DisplayUserDetails);

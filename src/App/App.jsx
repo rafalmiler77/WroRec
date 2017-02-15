@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { DisplayUserDetails } from '../display-user-details-view';
+import DisplayUserDetails from '../display-user-details-view/DisplayUserDetails';
 import './App.css';
 
 const mapStateToProps = state => ({
@@ -65,7 +65,7 @@ class App extends Component {
   }
 }
 App.propTypes = {
-  users: React.PropTypes.string.isRequired,
+  users: React.PropTypes.array.isRequired,
   addUser: React.PropTypes.func.isRequired,
   addInputValue: React.PropTypes.func.isRequired,
 };
