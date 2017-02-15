@@ -54,27 +54,27 @@ class App extends Component {
           <h1>A connection to Github API in React</h1>
         </div>
         <Grid>
-        <Well>
-          <h3>Input a login of a GitHub user:</h3>
-          <form>
-            <input
-              id="gitform"
-              value={this.state.inputValue}
-              type="text"
-              onChange={
-              (event) => {
-                this.setState({
-                  inputValue: event.target.value,
-                });
-                this.props.addInputValue(event.target.value);
-                this.handleOnChange(event.target.value);
-              }
+          <Well>
+            <h3>Input a login of a GitHub user:</h3>
+            <form>
+              <input
+                id="gitform"
+                value={this.state.inputValue}
+                type="text"
+                onChange={
+                (event) => {
+                  this.setState({
+                    inputValue: event.target.value,
+                  });
+                  this.props.addInputValue(event.target.value);
+                  this.handleOnChange(event.target.value);
+                }
             }
-            />
-          </form>
+              />
+            </form>
 
-          <DisplayUserDetails />
-        </Well>
+            <DisplayUserDetails />
+          </Well>
         </Grid>
       </Grid>
     );

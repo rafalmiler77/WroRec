@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { connect } from 'react-redux';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 const mapStateToProps = state => ({
   inputValue: state.usernameData.inputValue,
@@ -10,35 +11,37 @@ const mapStateToProps = state => ({
 });
 
 const DisplayUserDetails = props => (
-  <div>
-    {
-      (props.users !== undefined && props.inputValue) ?
+  <Grid>
+    <Row>
+      <h3>Details of a user:</h3>
+      <Col xs={2}>
+        <p>Login: </p>
+        <p>Name: </p>
+        <p>Company: </p>
+        <p>E-mail: </p>
+        <p>Gravatar: </p>
+        <p>Followers: </p>
+        <p>Following: </p>
+      </Col>
+      {
+      (props.users && props.inputValue) ?
         props.users.filter(
           user => user.login === props.inputValue,
         ).map(
           detail =>
-            <div key={detail}>
-              <h3>Details of a user:</h3>
-              <p>Login: {detail.login}</p>
-              <p>Name: {detail.name !== null ? detail.name : 'None'}</p>
-              <p>Company: {detail.company !== null ? detail.company : 'None'}</p>
-              <p>E-mail: {detail.email !== null ? detail.email : 'None'}</p>
-              <p>Gravatar: {detail.gravatar_id !== '' ? detail.gravatar_id : 'None'}</p>
-              <p>Followers: {detail.followers}</p>
-              <p>Following: {detail.following}</p>
-            </div>) :
-        <div>
-          <h3>Details of a user:</h3>
-          <p>Login: </p>
-          <p>Name: </p>
-          <p>Company: </p>
-          <p>E-mail: </p>
-          <p>Gravatar: </p>
-          <p>Followers: </p>
-          <p>Following: </p>
-        </div>
-    }
-  </div>
+            <Col key={detail}>
+              <p>{detail.login}</p>
+              <p>{detail.name !== null ? detail.name : 'None'}</p>
+              <p>{detail.company !== null ? detail.company : 'None'}</p>
+              <p>{detail.email !== null ? detail.email : 'None'}</p>
+              <p>{detail.gravatar_id !== '' ? detail.gravatar_id : 'None'}</p>
+              <p>{detail.followers}</p>
+              <p>{detail.following}</p>
+            </Col>) :
+        null
+      }
+    </Row>
+  </Grid>
 );
 DisplayUserDetails.propTypes = {
   users: React.PropTypes.array.isRequired,
