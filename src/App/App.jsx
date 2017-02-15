@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Well, Grid } from 'react-bootstrap';
+import { fetchUsersActionCreators } from './actionCreators';
 import DisplayUserDetails from '../display-user-details-view/DisplayUserDetails';
 import './App.css';
 
@@ -13,6 +14,7 @@ const mapDispatchToProps = dispatch => ({
   addInputValue: username => dispatch({ type: 'ADD_INPUT_VALUE', inputValue: username }),
   addUser: user => dispatch({ type: 'ADD_USER', user }),
   informAboutAlreadyFetchedUser: exisitingUser => dispatch({ type: 'ADD_EXISTING_USER', exisitingUser }),
+  fetchUsers: user => dispatch(fetchUsersActionCreators(user)),
 });
 
 class App extends Component {
@@ -32,20 +34,7 @@ class App extends Component {
           user => user.login === actualInput))) ?
            this.props.informAboutAlreadyFetchedUser(actualInput)
         :
-      searchTimeout = setTimeout(fetchUsers, 1000, actualInput);
-    };
-    const fetchUsers = (actualInput) => {
-      fetch(
-        `https://api.github.com/users/${actualInput}`,
-      ).then(
-        response => response.json(),
-      ).then(
-        (data) => {
-          this.props.addUser(data);
-        },
-      ).catch(
-        error => console.error(error),
-      );
+      searchTimeout = setTimeout(this.props.fetchUsers, 1000, actualInput);
     };
   }
 
