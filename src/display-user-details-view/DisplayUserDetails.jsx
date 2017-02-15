@@ -40,6 +40,9 @@ const DisplayUserDetails = props => (
     }
   </div>
 );
-
+DisplayUserDetails.propTypes = {
+  users: React.PropTypes.string.isRequired,
+  inputValue: React.PropTypes.string.isRequired,
+};
 export default connect(mapStateToProps)(DisplayUserDetails);
 

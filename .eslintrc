@@ -1,3 +1,17 @@
 {
-  "extends": "airbnb"
+  "extends": "airbnb",
+  "globals": {
+    "document": true,
+    "fetch": true,
+    "alert": true,
+    "it": true
+  },
+  "rules": {
+    "no-unused-expressions": [
+      2,
+      {
+        "allowTernary": true
+      }
+    ]
+  }
 }
