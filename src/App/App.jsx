@@ -73,6 +73,14 @@ class App extends Component {
                     null
                 }
               </Col>
+              <Col xsOffset={5}>
+                {
+                  (this.props.alreadyFetchedUser != '' &&
+                  this.props.alreadyFetchedUser === this.state.inputValue) ?
+                    <p>{this.props.alreadyFetchedUser} is alreday fetched</p> :
+                    null
+                }
+              </Col>
             </Row>
             <DisplayUserDetails />
           </Well>
@@ -87,6 +95,7 @@ App.propTypes = {
   informAboutAlreadyFetchedUser: React.PropTypes.func.isRequired,
   addInputValue: React.PropTypes.func.isRequired,
   pending: React.PropTypes.bool.isRequired,
+  alreadyFetchedUser: React.PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
