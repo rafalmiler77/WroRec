@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Well } from 'react-bootstrap';
+import { Well, Grid } from 'react-bootstrap';
 import DisplayUserDetails from '../display-user-details-view/DisplayUserDetails';
 import './App.css';
 
@@ -49,9 +49,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Well>
+      <Grid fluid>
+        <div className="Header">
           <h1>A connection to Github API in React</h1>
+        </div>
+        <Grid>
+        <Well>
           <h3>Input a login of a GitHub user:</h3>
           <form>
             <input
@@ -72,7 +75,8 @@ class App extends Component {
 
           <DisplayUserDetails />
         </Well>
-      </div>
+        </Grid>
+      </Grid>
     );
   }
 }

@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 const DisplayUserDetails = props => (
   <div>
     {
-      (props.users !== [] && props.inputValue !== '') ?
+      (props.users !== undefined && props.inputValue) ?
         props.users.filter(
           user => user.login === props.inputValue,
         ).map(

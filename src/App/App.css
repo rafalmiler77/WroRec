@@ -1,5 +1,12 @@
-.App {
+.Header {
   text-align: center;
-  font-size: large;
+  height: 80px;
+  background: black;
+}
+.Header h1 {
+  color: white;
+  vertical-align: middle;
+  font-size: 36px;
+  padding-top: 20px;
 }
 
