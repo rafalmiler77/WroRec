@@ -7,10 +7,12 @@ import './App.css';
 const mapStateToProps = state => ({
   inputValue: state.usernameData.inputValue,
   users: state.usernameData.users,
+  userExists: state.usernameData.userExists,
 });
 const mapDispatchToProps = dispatch => ({
   addInputValue: username => dispatch({ type: 'ADD_INPUT_VALUE', inputValue: username }),
   addUser: user => dispatch({ type: 'ADD_USER', user }),
+  informAboutExistingUser: exisitingUser => dispatch({ type: 'ADD_EXISTING_USER', exisitingUser }),
 });
 
 class App extends Component {
@@ -20,30 +22,30 @@ class App extends Component {
     this.state = {
       inputValue: '',
     };
-
     let searchTimeout;
     this.handleOnChange = (actualInput) => {
       if (searchTimeout !== undefined) {
         clearTimeout(searchTimeout);
       }
-      searchTimeout = setTimeout(this.fetchUsers, 1000, actualInput);
-    };
-    this.fetchUsers = (actualInput) => {
       (this.props.users !== null &&
-      (this.props.users.find(
-        user => user.login === actualInput))) ?
-        alert('This one exists already in store') :
-        fetch(
-          `https://api.github.com/users/${actualInput}`,
-        ).then(
-          response => response.json(),
-        ).then(
-          (data) => {
-            this.props.addUser(data);
-          },
-        ).catch(
-          error => console.error(error),
-        );
+        (this.props.users.find(
+          user => user.login === actualInput))) ?
+           this.props.informAboutExistingUser(actualInput)
+        :
+      searchTimeout = setTimeout(fetchUsers, 1000, actualInput);
+    };
+    const fetchUsers = (actualInput) => {
+      fetch(
+        `https://api.github.com/users/${actualInput}`,
+      ).then(
+        response => response.json(),
+      ).then(
+        (data) => {
+          this.props.addUser(data);
+        },
+      ).catch(
+        error => console.error(error),
+      );
     };
   }
 
@@ -83,6 +85,7 @@ class App extends Component {
 App.propTypes = {
   users: React.PropTypes.array.isRequired,
   addUser: React.PropTypes.func.isRequired,
+  informAboutExistingUser: React.PropTypes.func.isRequired,
   addInputValue: React.PropTypes.func.isRequired,
 };
 

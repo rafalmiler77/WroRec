@@ -4,6 +4,7 @@
 const initialState = {
   inputValue: '',
   users: [],
+  userExists: '',
 };
 
 export default (state = initialState, action) => {
@@ -18,6 +19,11 @@ export default (state = initialState, action) => {
         ...state,
         users: state.users.concat(action.user),
       };
+    case 'ADD_EXISTING_USER':
+      return {
+        ...state,
+        userExists: action.exisitingUser,
+      }
     default:
       return state;
   }
