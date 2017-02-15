@@ -76,7 +76,9 @@ class App extends Component {
                     null
                 }
               </Col>
-              <Col xsOffset={5}>
+            </Row>
+            <Row className="additionalInfoRow">
+              <Col className="additionalInfo">
                 {
                   (this.props.alreadyFetchedUser != '' &&
                   this.props.alreadyFetchedUser === this.state.inputValue) ?
@@ -84,7 +86,7 @@ class App extends Component {
                     null
                 }
               </Col>
-              <Col xsOffset={7}>
+              <Col className="additionalInfo">
                 {
                   this.props.userNotFound === true ?
                     <p>Login {this.state.inputValue} does not exist</p> :

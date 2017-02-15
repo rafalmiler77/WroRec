@@ -8,7 +8,7 @@ const initialState = {
   users: [],
   alreadyFetchedUser: '',
   pending: false,
-  userNotFound: false
+  userNotFound: false,
 };
 
 export default (state = initialState, action) => {
@@ -39,7 +39,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         userNotFound: true,
-      }
+      };
     default:
       return state;
   }

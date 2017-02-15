@@ -9,4 +9,11 @@
   font-size: 36px;
   padding-top: 20px;
 }
+.additionalInfo {
+  padding-left: 15px;
+  padding-top: 10px;
+}
+.additionalInfoRow {
+  height: 50px;
+}
 
