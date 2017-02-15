@@ -17,11 +17,6 @@ export default (state = initialState, action) => {
         ...state,
         inputValue: action.inputValue,
       };
-    case 'ADD_USER':
-      return {
-        ...state,
-        users: state.users.concat(action.user),
-      };
     case 'ADD_EXISTING_USER':
       return {
         ...state,

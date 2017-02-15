@@ -3,11 +3,11 @@
  */
 import { FETCH_USERS__BEGIN, FETCH_USERS__SUCCESS } from './actionTypes';
 
-export const fetchUsersActionCreators = (actualInput) => {
-  return (dispatch) => {
-    dispatch({ type: FETCH_USERS__BEGIN });
+const fetchUsersActionCreators = actualInput =>
+   (dispatch) => {
+     dispatch({ type: FETCH_USERS__BEGIN });
 
-    fetch(
+     fetch(
       `https://api.github.com/users/${actualInput}`,
     ).then(
       response => response.json(),
@@ -17,5 +17,6 @@ export const fetchUsersActionCreators = (actualInput) => {
         user,
       }),
     );
-  };
-};
+   };
+
+export default fetchUsersActionCreators;

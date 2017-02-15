@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Well, Grid } from 'react-bootstrap';
-import { fetchUsersActionCreators } from './actionCreators';
+import fetchUsersActionCreators from './actionCreators';
 import DisplayUserDetails from '../display-user-details-view/DisplayUserDetails';
 import './App.css';
 
@@ -12,7 +12,6 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   addInputValue: username => dispatch({ type: 'ADD_INPUT_VALUE', inputValue: username }),
-  addUser: user => dispatch({ type: 'ADD_USER', user }),
   informAboutAlreadyFetchedUser: exisitingUser => dispatch({ type: 'ADD_EXISTING_USER', exisitingUser }),
   fetchUsers: user => dispatch(fetchUsersActionCreators(user)),
 });
@@ -60,7 +59,7 @@ class App extends Component {
                   this.props.addInputValue(event.target.value);
                   this.handleOnChange(event.target.value);
                 }
-            }
+                }
               />
             </form>
 
@@ -73,7 +72,7 @@ class App extends Component {
 }
 App.propTypes = {
   users: React.PropTypes.array.isRequired,
-  addUser: React.PropTypes.func.isRequired,
+  fetchUsers: React.PropTypes.func.isRequired,
   informAboutAlreadyFetchedUser: React.PropTypes.func.isRequired,
   addInputValue: React.PropTypes.func.isRequired,
 };

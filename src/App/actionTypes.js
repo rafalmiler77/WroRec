@@ -3,4 +3,3 @@
  */
 export const FETCH_USERS__BEGIN = 'display-view/FETCH_USERS__BEGIN';
 export const FETCH_USERS__SUCCESS = 'display-view/FETCH_USERS__SUCCESS';
-
