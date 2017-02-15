@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
   users: state.usernameData.users,
   alreadyFetchedUser: state.usernameData.alreadyFetchedUser,
   pending: state.usernameData.pending,
+  userNotFound: state.usernameData.userNotFound,
 });
 const mapDispatchToProps = dispatch => ({
   addInputValue: username => dispatch({ type: 'ADD_INPUT_VALUE', inputValue: username }),
@@ -54,7 +55,6 @@ class App extends Component {
               <Col xs={3}>
                 <form>
                   <input
-                    id="gitform"
                     value={this.state.inputValue}
                     type="text"
                     onChange={
@@ -84,6 +84,13 @@ class App extends Component {
                     null
                 }
               </Col>
+              <Col xsOffset={7}>
+                {
+                  this.props.userNotFound === true ?
+                    <p>Login {this.state.inputValue} does not exist</p> :
+                    null
+                }
+              </Col>
             </Row>
             <DisplayUserDetails />
           </Well>
@@ -98,6 +105,7 @@ App.propTypes = {
   informAboutAlreadyFetchedUser: React.PropTypes.func.isRequired,
   addInputValue: React.PropTypes.func.isRequired,
   pending: React.PropTypes.bool.isRequired,
+  userNotFound: React.PropTypes.bool.isRequired,
   alreadyFetchedUser: React.PropTypes.string.isRequired,
 };
 
