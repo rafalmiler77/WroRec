@@ -29,6 +29,9 @@ class App extends Component {
       if (searchTimeout !== undefined) {
         clearTimeout(searchTimeout);
       }
+      if (actualInput === '') {
+        return;
+      }
       (this.props.users !== null &&
       (this.props.users.find(
         user => user.login === actualInput))) ?
