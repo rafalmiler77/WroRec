@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Well } from 'react-bootstrap';
 import DisplayUserDetails from '../display-user-details-view/DisplayUserDetails';
 import './App.css';
 
@@ -49,14 +50,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>A connection to Github API in React</h1>
-        <h3>Input a login of a GitHub user:</h3>
-        <form>
-          <input
-            id="gitform"
-            value={this.state.inputValue}
-            type="text"
-            onChange={
+        <Well>
+          <h1>A connection to Github API in React</h1>
+          <h3>Input a login of a GitHub user:</h3>
+          <form>
+            <input
+              id="gitform"
+              value={this.state.inputValue}
+              type="text"
+              onChange={
               (event) => {
                 this.setState({
                   inputValue: event.target.value,
@@ -65,10 +67,11 @@ class App extends Component {
                 this.handleOnChange(event.target.value);
               }
             }
-          />
-        </form>
+            />
+          </form>
 
-        <DisplayUserDetails />
+          <DisplayUserDetails />
+        </Well>
       </div>
     );
   }
