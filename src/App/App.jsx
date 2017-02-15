@@ -22,19 +22,19 @@ class App extends Component {
     };
 
     let searchTimeout;
-    this.handleOnChange = () => {
+    this.handleOnChange = (actualInput) => {
       if (searchTimeout !== undefined) {
         clearTimeout(searchTimeout);
       }
-      searchTimeout = setTimeout(this.fetchUsers, 1000);
+      searchTimeout = setTimeout(this.fetchUsers, 1000, actualInput);
     };
-    this.fetchUsers = () => {
+    this.fetchUsers = (actualInput) => {
       (this.props.users !== null &&
       (this.props.users.find(
-        user => user.login === this.state.inputValue))) ?
+        user => user.login === actualInput))) ?
         alert('This one exists already in store') :
         fetch(
-          `https://api.github.com/users/${this.state.inputValue}`,
+          `https://api.github.com/users/${actualInput}`,
         ).then(
           response => response.json(),
         ).then(
