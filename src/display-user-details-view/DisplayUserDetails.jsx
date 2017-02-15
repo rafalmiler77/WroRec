@@ -11,8 +11,6 @@ const mapStateToProps = state => ({
 
 const DisplayUserDetails = props => (
   <div>
-    {console.log('props.users',props.users,'props.inputValue',props.inputValue)}
-
     {
       (props.users !== [] && props.inputValue !== '') ?
         props.users.filter(

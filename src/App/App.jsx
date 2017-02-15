@@ -19,13 +19,21 @@ class App extends Component {
     this.state = {
       inputValue: '',
     };
-    this.handleOnChange = (actualInput) => {
+
+    let searchTimeout;
+    this.handleOnChange = () => {
+      if (searchTimeout !== undefined) {
+        clearTimeout(searchTimeout);
+      }
+      searchTimeout = setTimeout(this.fetchUsers, 1000);
+    };
+    this.fetchUsers = () => {
       (this.props.users !== null &&
       (this.props.users.find(
-        user => user.login === actualInput))) ?
+        user => user.login === this.state.inputValue))) ?
         alert('This one exists already in store') :
         fetch(
-          `https://api.github.com/users/${actualInput}`,
+          `https://api.github.com/users/${this.state.inputValue}`,
         ).then(
           response => response.json(),
         ).then(
@@ -45,6 +53,7 @@ class App extends Component {
         <h3>Input a login of a GitHub user:</h3>
         <form>
           <input
+            id="gitform"
             value={this.state.inputValue}
             type="text"
             onChange={
