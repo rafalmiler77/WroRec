@@ -52,7 +52,7 @@ class App extends Component {
           <Well>
             <h3>Input a login of a GitHub user:</h3>
             <Row>
-              <Col xs={3}>
+              <Col xs={6} md={3}>
                 <form>
                   <input
                     value={this.state.inputValue}
@@ -69,7 +69,7 @@ class App extends Component {
                   />
                 </form>
               </Col>
-              <Col>
+              <Col xs={3}>
                 {
                   this.props.pending === true ?
                     <p>Pending...</p> :
@@ -82,14 +82,15 @@ class App extends Component {
                 {
                   (this.props.alreadyFetchedUser != '' &&
                   this.props.alreadyFetchedUser === this.state.inputValue) ?
-                    <p>{this.props.alreadyFetchedUser} is alreday fetched</p> :
+                    <p>User with login &quot;{this.props.alreadyFetchedUser}&quot;
+                      has been already fetched.</p> :
                     null
                 }
               </Col>
               <Col className="additionalInfo">
                 {
                   this.props.userNotFound === true ?
-                    <p>Login {this.state.inputValue} does not exist</p> :
+                    <p>Login &quot;{this.state.inputValue}&quot; does not exist.</p> :
                     null
                 }
               </Col>
