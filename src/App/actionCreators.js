@@ -17,9 +17,7 @@ const fetchUser = actualInput =>
            });
            return false;
          }
-         else {
-           return response.json();
-         }
+         return response.json();
        },
      ).then(
       user => dispatch({
