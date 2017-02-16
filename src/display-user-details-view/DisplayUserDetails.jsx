@@ -26,10 +26,11 @@ const DisplayUserDetails = props => (
       {
       (props.users && props.inputValue) ?
         props.users.filter(
-          user => user.login === props.inputValue,
+          user => user.login !== undefined &&
+          user.login.toLowerCase() === props.inputValue.toLowerCase(),
         ).map(
           detail =>
-            <Col key={detail}>
+            <Col key={detail.id}>
               <p>{detail.login}</p>
               <p>{detail.name !== null ? detail.name : 'None'}</p>
               <p>{detail.company !== null ? detail.company : 'None'}</p>

@@ -35,7 +35,8 @@ class App extends Component {
       }
       (this.props.users !== null &&
       (this.props.users.find(
-        user => user.login === actualInput))) ?
+        user => user.login !== undefined &&
+        user.login.toLowerCase() === actualInput.toLowerCase()))) ?
         this.props.informAboutAlreadyFetchedUser(actualInput)
         :
         searchTimeout = setTimeout(this.props.dispatchFetchUsers, 1000, actualInput);
@@ -80,7 +81,7 @@ class App extends Component {
             <Row className="additionalInfoRow">
               <Col className="additionalInfo">
                 {
-                  (this.props.alreadyFetchedUser != '' &&
+                  (this.props.alreadyFetchedUser !== '' &&
                   this.props.alreadyFetchedUser === this.state.inputValue) ?
                     <p>User with login &quot;{this.props.alreadyFetchedUser}&quot;
                       has been already fetched.</p> :

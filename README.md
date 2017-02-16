@@ -11,4 +11,3 @@ The App:
  
 TO DO:
  - gravatar is not displayed as an image because I haven't found any a with gravatar.
- - bug: app input is case-sensitive, requests not.
