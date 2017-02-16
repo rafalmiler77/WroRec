@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Well, Grid, Row, Col } from 'react-bootstrap';
-import fetchUsersActionCreators from './actionCreators';
+import fetchUser from './actionCreators';
 import DisplayUserDetails from '../display-user-details-view/DisplayUserDetails';
 import './App.css';
 
@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addInputValue: username => dispatch({ type: 'ADD_INPUT_VALUE', inputValue: username }),
   informAboutAlreadyFetchedUser: exisitingUser => dispatch({ type: 'ADD_EXISTING_USER', exisitingUser }),
-  fetchUsers: user => dispatch(fetchUsersActionCreators(user)),
+  dispatchFetchUsers: user => dispatch(fetchUser(user)),
 });
 
 class App extends Component {
@@ -38,7 +38,7 @@ class App extends Component {
         user => user.login === actualInput))) ?
         this.props.informAboutAlreadyFetchedUser(actualInput)
         :
-        searchTimeout = setTimeout(this.props.fetchUsers, 1000, actualInput);
+        searchTimeout = setTimeout(this.props.dispatchFetchUsers, 1000, actualInput);
     };
   }
 
@@ -103,7 +103,7 @@ class App extends Component {
 }
 App.propTypes = {
   users: React.PropTypes.array.isRequired,
-  fetchUsers: React.PropTypes.func.isRequired,
+  dispatchFetchUsers: React.PropTypes.func.isRequired,
   informAboutAlreadyFetchedUser: React.PropTypes.func.isRequired,
   addInputValue: React.PropTypes.func.isRequired,
   pending: React.PropTypes.bool.isRequired,

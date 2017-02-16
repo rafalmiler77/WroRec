@@ -3,7 +3,7 @@
  */
 import { FETCH_USERS__BEGIN, FETCH_USERS__SUCCESS, USER_NOT_FOUND } from './actionTypes';
 
-const fetchUsersActionCreators = actualInput =>
+const fetchUser = actualInput =>
    (dispatch) => {
      dispatch({ type: FETCH_USERS__BEGIN });
 
@@ -29,4 +29,4 @@ const fetchUsersActionCreators = actualInput =>
     );
    };
 
-export default fetchUsersActionCreators;
+export default fetchUser;
