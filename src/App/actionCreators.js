@@ -1,7 +1,7 @@
 /**
  * Created by rafael on 13.02.17.
  */
-import { FETCH_USERS__BEGIN, FETCH_USERS__SUCCESS, USER_NOT_FOUND } from './actionTypes';
+import { FETCH_USERS__BEGIN, FETCH_USERS__END, USER_NOT_FOUND } from './actionTypes';
 
 const fetchUser = actualInput =>
    (dispatch) => {
@@ -21,7 +21,7 @@ const fetchUser = actualInput =>
        },
      ).then(
       user => dispatch({
-        type: FETCH_USERS__SUCCESS,
+        type: FETCH_USERS__END,
         user,
       }),
     );

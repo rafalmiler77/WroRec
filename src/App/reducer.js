@@ -1,7 +1,7 @@
 /**
  * Created by rafael on 13.02.17.
  */
-import { FETCH_USERS__BEGIN, FETCH_USERS__SUCCESS, USER_NOT_FOUND } from './actionTypes';
+import { FETCH_USERS__BEGIN, FETCH_USERS__END, USER_NOT_FOUND } from './actionTypes';
 
 const initialState = {
   inputValue: '',
@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
         ...state,
         pending: true,
       };
-    case FETCH_USERS__SUCCESS:
+    case FETCH_USERS__END:
       return {
         ...state,
         users: state.users.concat(action.user),
