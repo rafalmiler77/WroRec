@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 const mapStateToProps = state => ({
-  inputValue: state.usernameData.inputValue,
-  users: state.usernameData.users,
+  inputValue: state.githubUserData.inputValue,
+  users: state.githubUserData.users,
 });
 
 const DisplayUserDetails = props => (

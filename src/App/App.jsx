@@ -6,11 +6,11 @@ import DisplayUserDetails from '../display-user-details-view/DisplayUserDetails'
 import './App.css';
 
 const mapStateToProps = state => ({
-  inputValue: state.usernameData.inputValue,
-  users: state.usernameData.users,
-  alreadyFetchedUser: state.usernameData.alreadyFetchedUser,
-  pending: state.usernameData.pending,
-  userNotFound: state.usernameData.userNotFound,
+  inputValue: state.githubUserData.inputValue,
+  users: state.githubUserData.users,
+  alreadyFetchedUser: state.githubUserData.alreadyFetchedUser,
+  pending: state.githubUserData.pending,
+  userNotFound: state.githubUserData.userNotFound,
 });
 const mapDispatchToProps = dispatch => ({
   addInputValue: username => dispatch({ type: 'ADD_INPUT_VALUE', inputValue: username }),
