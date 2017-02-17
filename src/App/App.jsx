@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Well, Grid, Row, Col } from 'react-bootstrap';
+import { DisplayUserDetails } from '../display-user-details-view';
 import fetchUser from './state/actionCreators';
-import DisplayUserDetails from '../display-user-details-view/DisplayUserDetails';
 import './App.css';
 
 const mapStateToProps = state => ({
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
   users: state.githubUserData.users,
   alreadyFetchedUser: state.githubUserData.alreadyFetchedUser,
   pending: state.githubUserData.pending,
-  userNotFound: state.githubUserData.userNotFound,
+  foundStatus: state.githubUserData.foundStatus,
 });
 const mapDispatchToProps = dispatch => ({
   addInputValue: username => dispatch({ type: 'ADD_INPUT_VALUE', inputValue: username }),
@@ -91,7 +91,7 @@ class App extends Component {
               </Col>
               <Col className="additionalInfo">
                 {
-                  this.props.userNotFound === true ?
+                  this.props.foundStatus === true ?
                     <p>Login &quot;{this.state.inputValue}&quot; does not exist.</p> :
                     null
                 }
@@ -110,7 +110,7 @@ App.propTypes = {
   informAboutAlreadyFetchedUser: React.PropTypes.func.isRequired,
   addInputValue: React.PropTypes.func.isRequired,
   pending: React.PropTypes.bool.isRequired,
-  userNotFound: React.PropTypes.bool.isRequired,
+  foundStatus: React.PropTypes.bool.isRequired,
   alreadyFetchedUser: React.PropTypes.string.isRequired,
 };
 

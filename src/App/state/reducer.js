@@ -8,7 +8,7 @@ const initialState = {
   users: [],
   alreadyFetchedUser: '',
   pending: false,
-  userNotFound: false,
+  foundStatus: false,
 };
 
 export default (state = initialState, action) => {
@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         inputValue: action.inputValue,
-        userNotFound: false,
+        foundStatus: false,
       };
     case 'ADD_EXISTING_USER':
       return {
@@ -35,11 +35,11 @@ export default (state = initialState, action) => {
         users: state.users.concat(action.user),
         pending: false,
       };
-    // case USER_NOT_FOUND:
-    //   return {
-    //     ...state,
-    //     userNotFound: true,
-    //   };
+    case USER_NOT_FOUND:
+      return {
+        ...state,
+        foundStatus: true,
+      };
     default:
       return state;
   }

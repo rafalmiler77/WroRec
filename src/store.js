@@ -4,12 +4,12 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import persistState from 'redux-localstorage';
-import { reducer as displayUserDetailsReducer } from './App';
-import { reducerUserNotFound } from './App';
+import { reducer as displayUserDetailsReducer } from './App/state';
+import { reducer as userNotFoundReducer } from './App/state/userNotFound';
 
 const reducer = combineReducers({
   githubUserData: displayUserDetailsReducer,
-  notFoundData: reducerUserNotFound,
+  notFoundData: userNotFoundReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

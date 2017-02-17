@@ -1,11 +1,10 @@
 /**
  * Created by rafael on 17.02.17.
  */
-import { USER_NOT_FOUND } from './actionTypes';
+import { USER_NOT_FOUND } from '../actionTypes';
 
 const initialState = {
-  usersNotFoundInStorage: [],
-  userNotFound: false,
+  usersNotFound: [],
 };
 
 export default (state = initialState, action) => {
@@ -13,9 +12,7 @@ export default (state = initialState, action) => {
     case USER_NOT_FOUND:
       return {
         ...state,
-        userNotFound: true,
-        userNotFoundToStorage: state.usersNotFoundInStorage.concat(action.user),
-
+        usersNotFound: state.usersNotFound.concat(action.user),
       };
     default:
       return state;
