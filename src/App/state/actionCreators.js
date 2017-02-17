@@ -14,6 +14,7 @@ const fetchUser = actualInput =>
          if (response.status === 404) {
            dispatch({
              type: USER_NOT_FOUND,
+             user: actualInput,
            });
            return false;
          }

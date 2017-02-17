@@ -35,11 +35,11 @@ export default (state = initialState, action) => {
         users: state.users.concat(action.user),
         pending: false,
       };
-    case USER_NOT_FOUND:
-      return {
-        ...state,
-        userNotFound: true,
-      };
+    // case USER_NOT_FOUND:
+    //   return {
+    //     ...state,
+    //     userNotFound: true,
+    //   };
     default:
       return state;
   }
