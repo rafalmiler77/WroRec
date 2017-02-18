@@ -12,7 +12,10 @@ export default (state = initialState, action) => {
     case USER_NOT_FOUND:
       return {
         ...state,
-        usersNotFound: state.usersNotFound.concat(action.user),
+        usersNotFound: state.usersNotFound.find(
+          user => user === action.user) ?
+          state.usersNotFound :
+          state.usersNotFound.concat(action.user),
       };
     default:
       return state;
