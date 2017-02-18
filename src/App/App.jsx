@@ -25,7 +25,6 @@ class App extends Component {
     this.state = {
       inputValue: '',
     };
-
     let searchTimeout;
     this.handleOnChange = (actualInput) => {
       if (searchTimeout !== undefined) {
