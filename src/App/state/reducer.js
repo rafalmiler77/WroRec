@@ -46,7 +46,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loginInStorage: true,
-      }
+      };
     default:
       return state;
   }
