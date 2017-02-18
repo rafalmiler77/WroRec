@@ -1,3 +1,4 @@
+/* eslint no-nested-ternary: 1 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Well, Grid, Row, Col } from 'react-bootstrap';
@@ -11,10 +12,13 @@ const mapStateToProps = state => ({
   alreadyFetchedUser: state.githubUserData.alreadyFetchedUser,
   pending: state.githubUserData.pending,
   foundStatus: state.githubUserData.foundStatus,
+  usersNotFound: state.notFoundData.usersNotFound,
+  loginInStorage: state.githubUserData.loginInStorage,
 });
 const mapDispatchToProps = dispatch => ({
   addInputValue: username => dispatch({ type: 'ADD_INPUT_VALUE', inputValue: username }),
   informAboutAlreadyFetchedUser: exisitingUser => dispatch({ type: 'ADD_EXISTING_USER', exisitingUser }),
+  informAboutNotFoundLogin: item => dispatch({ type: 'LOGIN_IN_STORAGE', item }),
   dispatchFetchUsers: user => dispatch(fetchUser(user)),
 });
 
@@ -36,9 +40,15 @@ class App extends Component {
       (this.props.users !== null &&
       (this.props.users.find(
         user => user.login !== undefined &&
-        user.login.toLowerCase() === actualInput.toLowerCase()))) ?
+        user.login.toLowerCase() === actualInput.toLowerCase())))
+        ?
         this.props.informAboutAlreadyFetchedUser(actualInput)
         :
+        this.props.usersNotFound.find(
+          item => item.toLowerCase() === actualInput.toLowerCase(),
+        ) ?
+          this.props.informAboutNotFoundLogin(actualInput)
+          :
         searchTimeout = setTimeout(this.props.dispatchFetchUsers, 1000, actualInput);
     };
   }
@@ -95,6 +105,13 @@ class App extends Component {
                     null
                 }
               </Col>
+              <Col className="additionalInfo">
+                {
+                  this.props.loginInStorage === true ?
+                    <p>Login &quot;{this.state.inputValue}&quot; does not exist.</p> :
+                    null
+                }
+              </Col>
             </Row>
             <DisplayUserDetails />
           </Well>
@@ -105,11 +122,14 @@ class App extends Component {
 }
 App.propTypes = {
   users: React.PropTypes.array.isRequired,
+  usersNotFound: React.PropTypes.array.isRequired,
   dispatchFetchUsers: React.PropTypes.func.isRequired,
   informAboutAlreadyFetchedUser: React.PropTypes.func.isRequired,
+  informAboutNotFoundLogin: React.PropTypes.func.isRequired,
   addInputValue: React.PropTypes.func.isRequired,
   pending: React.PropTypes.bool.isRequired,
   foundStatus: React.PropTypes.bool.isRequired,
+  loginInStorage: React.PropTypes.bool.isRequired,
   alreadyFetchedUser: React.PropTypes.string.isRequired,
 };
 

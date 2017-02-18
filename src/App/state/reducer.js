@@ -9,6 +9,7 @@ const initialState = {
   alreadyFetchedUser: '',
   pending: false,
   foundStatus: false,
+  loginInStorage: false,
 };
 
 export default (state = initialState, action) => {
@@ -18,6 +19,7 @@ export default (state = initialState, action) => {
         ...state,
         inputValue: action.inputValue,
         foundStatus: false,
+        loginInStorage: false,
       };
     case 'ADD_EXISTING_USER':
       return {
@@ -40,6 +42,11 @@ export default (state = initialState, action) => {
         ...state,
         foundStatus: true,
       };
+    case 'LOGIN_IN_STORAGE':
+      return {
+        ...state,
+        loginInStorage: true,
+      }
     default:
       return state;
   }
