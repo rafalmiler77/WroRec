@@ -100,14 +100,7 @@ class App extends Component {
               </Col>
               <Col className="additionalInfo">
                 {
-                  this.props.foundStatus === true ?
-                    <p>Login &quot;{this.state.inputValue}&quot; does not exist.</p> :
-                    null
-                }
-              </Col>
-              <Col className="additionalInfo">
-                {
-                  this.props.loginInStorage === true ?
+                  this.props.foundStatus === true || this.props.loginInStorage === true ?
                     <p>Login &quot;{this.state.inputValue}&quot; does not exist.</p> :
                     null
                 }
