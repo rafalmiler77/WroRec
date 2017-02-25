@@ -14,6 +14,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={App} />
+        <Route path="/mainView2" component={mainView} />
       </Route >
       <Route path="/mainView" component={mainView} />
     </Router>

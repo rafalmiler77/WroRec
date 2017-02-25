@@ -109,6 +109,9 @@ class mainView extends Component {
             <DisplayUserDetails />
           </Well>
         </Grid>
+        <Col md={12}>
+          {this.props.children}
+        </Col>
       </Grid>
     );
   }
