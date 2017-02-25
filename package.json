@@ -1,5 +1,6 @@
 {
   "name": "WroRec",
+  "homepage": "http://www.piotrowski.nq.pl",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
