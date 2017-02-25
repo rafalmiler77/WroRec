@@ -3,12 +3,11 @@
  */
 import React from 'react';
 import { mainView } from '../main-view';
-import './App.css';
 
 const App = props => (
   <mainView>{props.children}</mainView>
 );
 App.propTypes = {
-  children: React.PropTypes.element.isRequired,
+  children: React.PropTypes.node.isRequired,
 };
 export default App;
