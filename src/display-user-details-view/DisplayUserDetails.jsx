@@ -44,6 +44,7 @@ const DisplayUserDetails = props => (
     </Row>
   </Grid>
 );
+
 DisplayUserDetails.propTypes = {
   users: React.PropTypes.array.isRequired,
   inputValue: React.PropTypes.string.isRequired,
