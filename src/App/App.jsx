@@ -6,6 +6,7 @@ import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router';
 import { mainView } from '../main-view';
+import './App.css';
 
 const App = props => (
   <div>

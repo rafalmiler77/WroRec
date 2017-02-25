@@ -1,7 +1,7 @@
 /* eslint no-nested-ternary: 1 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Well, Grid, Row, Col } from 'react-bootstrap';
+import { Well, Row, Col } from 'react-bootstrap';
 import { DisplayUserDetails } from '../display-user-details-view';
 import fetchUser from './state/actionCreators';
 import './mainView.css';
@@ -55,54 +55,54 @@ class mainView extends Component {
 
   render() {
     return (
-        <Well>
-          <h3>Input a login of a GitHub user:</h3>
-          <Row>
-            <Col xs={6} md={3}>
-              <form>
-                <input
-                  value={this.state.inputValue}
-                  type="text"
-                  onChange={
-                    (event) => {
-                      this.setState({
-                        inputValue: event.target.value,
-                      });
-                      this.props.addInputValue(event.target.value);
-                      this.handleOnChange(event.target.value);
-                    }
+      <Well>
+        <h3>Input a login of a GitHub user:</h3>
+        <Row>
+          <Col xs={6} md={3}>
+            <form>
+              <input
+                value={this.state.inputValue}
+                type="text"
+                onChange={
+                  (event) => {
+                    this.setState({
+                      inputValue: event.target.value,
+                    });
+                    this.props.addInputValue(event.target.value);
+                    this.handleOnChange(event.target.value);
                   }
-                />
-              </form>
-            </Col>
-            <Col xs={3}>
-              {
-                this.props.pending === true ?
-                  <p>Pending...</p> :
-                  null
-              }
-            </Col>
-          </Row>
-          <Row className="additionalInfoRow">
-            <Col className="additionalInfo">
-              {
-                (this.props.alreadyFetchedUser !== '' &&
-                this.props.alreadyFetchedUser === this.state.inputValue) ?
-                  <p>User with login &quot;{this.props.alreadyFetchedUser}&quot;
-                    has been already fetched.</p> :
-                  null
-              }
-            </Col>
-            <Col className="additionalInfo">
-              {
-                this.props.foundStatus === true || this.props.loginInStorage === true ?
-                  <p>Login &quot;{this.state.inputValue}&quot; does not exist.</p> :
-                  null
-              }
-            </Col>
-          </Row>
-          <DisplayUserDetails />
-        </Well>
+                }
+              />
+            </form>
+          </Col>
+          <Col xs={3}>
+            {
+              this.props.pending === true ?
+                <p>Pending...</p> :
+                null
+            }
+          </Col>
+        </Row>
+        <Row className="additionalInfoRow">
+          <Col className="additionalInfo">
+            {
+              (this.props.alreadyFetchedUser !== '' &&
+              this.props.alreadyFetchedUser === this.state.inputValue) ?
+                <p>User with login &quot;{this.props.alreadyFetchedUser}&quot;
+                  has been already fetched.</p> :
+                null
+            }
+          </Col>
+          <Col className="additionalInfo">
+            {
+              this.props.foundStatus === true || this.props.loginInStorage === true ?
+                <p>Login &quot;{this.state.inputValue}&quot; does not exist.</p> :
+                null
+            }
+          </Col>
+        </Row>
+        <DisplayUserDetails />
+      </Well>
     );
   }
 }
