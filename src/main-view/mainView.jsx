@@ -55,7 +55,6 @@ class mainView extends Component {
 
   render() {
     return (
-      <Grid>
         <Well>
           <h3>Input a login of a GitHub user:</h3>
           <Row>
@@ -104,7 +103,6 @@ class mainView extends Component {
           </Row>
           <DisplayUserDetails />
         </Well>
-      </Grid>
     );
   }
 }
