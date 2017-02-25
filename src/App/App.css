@@ -1,6 +1,6 @@
 .Header {
   text-align: center;
-  height: 80px;
+  min-height: 80px;
   background: black;
 }
 .Header h1 {

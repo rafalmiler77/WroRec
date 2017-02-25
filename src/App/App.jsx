@@ -37,10 +37,10 @@ class App extends Component {
       if (actualInput === '') {
         return;
       }
-      (this.props.users !== null &&
-      (this.props.users.find(
+      this.props.users !== null &&
+      this.props.users.find(
         user => user.login !== undefined &&
-        user.login.toLowerCase() === actualInput.toLowerCase())))
+        user.login.toLowerCase() === actualInput.toLowerCase())
         ?
         this.props.informAboutAlreadyFetchedUser(actualInput)
         :
