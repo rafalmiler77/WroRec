@@ -13,10 +13,9 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={App}>
-        <IndexRoute component={App} />
-        <Route path="/mainView2" component={mainView} />
+        <IndexRoute component={mainView}/>
+        {/*<Route path="/mainView" component={mainView} />*/}
       </Route >
-      <Route path="/mainView" component={mainView} />
     </Router>
   </Provider>,
   document.getElementById('root'),

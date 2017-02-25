@@ -5,13 +5,10 @@ import React from 'react';
 import { mainView } from '../main-view';
 import './App.css';
 
-class App extends React.Component {
-  render() {
-    console.log(this.props, 'rendering');
-    return (
-      <mainView>{this.props.children}</mainView>
-    );
-  }
-}
-
+const App = props => (
+  <mainView>{props.children}</mainView>
+);
+App.propTypes = {
+  children: React.PropTypes.element.isRequired,
+};
 export default App;
