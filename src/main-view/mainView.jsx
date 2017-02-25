@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Well, Grid, Row, Col } from 'react-bootstrap';
 import { DisplayUserDetails } from '../display-user-details-view';
 import fetchUser from './state/actionCreators';
-import './App.css';
+import './mainView.css';
 
 const mapStateToProps = state => ({
   inputValue: state.githubUserData.inputValue,
@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
   dispatchFetchUsers: user => dispatch(fetchUser(user)),
 });
 
-class App extends Component {
+class mainView extends Component {
   constructor() {
     super();
 
@@ -113,7 +113,7 @@ class App extends Component {
     );
   }
 }
-App.propTypes = {
+mainView.propTypes = {
   users: React.PropTypes.array.isRequired,
   usersNotFound: React.PropTypes.array.isRequired,
   dispatchFetchUsers: React.PropTypes.func.isRequired,
@@ -126,4 +126,4 @@ App.propTypes = {
   alreadyFetchedUser: React.PropTypes.string.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(mainView);

@@ -4,8 +4,8 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import persistState from 'redux-localstorage';
-import { reducer as displayUserDetailsReducer } from './App/state';
-import { reducer as userNotFoundReducer } from './App/state/userNotFound';
+import { reducer as displayUserDetailsReducer } from './main-view/state';
+import { reducer as userNotFoundReducer } from './main-view/state/userNotFound';
 
 const reducer = combineReducers({
   githubUserData: displayUserDetailsReducer,
