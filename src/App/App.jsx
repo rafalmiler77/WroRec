@@ -21,6 +21,7 @@ const App = props => (
           <Navbar.Brand>
             <Link to="/">Home</Link>
           </Navbar.Brand>
+          <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
