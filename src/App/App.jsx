@@ -2,7 +2,10 @@
  * Created by rafael on 25.02.17.
  */
 import React from 'react';
-import { Grid } from 'react-bootstrap';
+import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router';
+
 import { mainView } from '../main-view';
 
 const App = props => (
@@ -10,6 +13,20 @@ const App = props => (
     <div className="Header">
       <h1>A connection to Github API in React</h1>
     </div>
+    <Navbar>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <Link to="/">Home</Link>
+        </Navbar.Brand>
+      </Navbar.Header>
+      <Navbar.Collapse>
+        <Nav bsStyle="tabs">
+          <LinkContainer to="/tableView">
+            <NavItem eventKey={1}>tableView</NavItem>
+          </LinkContainer>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
     <mainView>{props.children}</mainView>
   </Grid>
 
