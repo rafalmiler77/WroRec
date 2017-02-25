@@ -26,7 +26,7 @@ const App = props => (
         <Navbar.Collapse>
           <Nav>
             <LinkContainer to="/tableView">
-              <NavItem eventKey={1}>tableView</NavItem>
+              <NavItem eventKey={1}>Users table</NavItem>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
