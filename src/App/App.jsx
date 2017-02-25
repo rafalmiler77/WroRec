@@ -5,13 +5,12 @@ import React from 'react';
 import { Grid, Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router';
-
 import { mainView } from '../main-view';
 
 const App = props => (
   <div>
     <Grid fluid>
-      <div className="Header">
+      <div className="header">
         <h1>A connection to Github API in React</h1>
       </div>
     </Grid>

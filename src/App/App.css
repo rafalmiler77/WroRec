@@ -1,0 +1,11 @@
+.header {
+  text-align: center;
+  min-height: 80px;
+  background: black;
+}
+.header h1 {
+  color: white;
+  vertical-align: middle;
+  font-size: 36px;
+  padding-top: 20px;
+}
