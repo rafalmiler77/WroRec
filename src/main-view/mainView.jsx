@@ -55,60 +55,55 @@ class mainView extends Component {
 
   render() {
     return (
-      <Grid fluid>
-        <div className="Header">
-          <h1>A connection to Github API in React</h1>
-        </div>
-        <Grid>
-          <Well>
-            <h3>Input a login of a GitHub user:</h3>
-            <Row>
-              <Col xs={6} md={3}>
-                <form>
-                  <input
-                    value={this.state.inputValue}
-                    type="text"
-                    onChange={
-                      (event) => {
-                        this.setState({
-                          inputValue: event.target.value,
-                        });
-                        this.props.addInputValue(event.target.value);
-                        this.handleOnChange(event.target.value);
-                      }
+      <Grid>
+        <Well>
+          <h3>Input a login of a GitHub user:</h3>
+          <Row>
+            <Col xs={6} md={3}>
+              <form>
+                <input
+                  value={this.state.inputValue}
+                  type="text"
+                  onChange={
+                    (event) => {
+                      this.setState({
+                        inputValue: event.target.value,
+                      });
+                      this.props.addInputValue(event.target.value);
+                      this.handleOnChange(event.target.value);
                     }
-                  />
-                </form>
-              </Col>
-              <Col xs={3}>
-                {
-                  this.props.pending === true ?
-                    <p>Pending...</p> :
-                    null
-                }
-              </Col>
-            </Row>
-            <Row className="additionalInfoRow">
-              <Col className="additionalInfo">
-                {
-                  (this.props.alreadyFetchedUser !== '' &&
-                  this.props.alreadyFetchedUser === this.state.inputValue) ?
-                    <p>User with login &quot;{this.props.alreadyFetchedUser}&quot;
-                      has been already fetched.</p> :
-                    null
-                }
-              </Col>
-              <Col className="additionalInfo">
-                {
-                  this.props.foundStatus === true || this.props.loginInStorage === true ?
-                    <p>Login &quot;{this.state.inputValue}&quot; does not exist.</p> :
-                    null
-                }
-              </Col>
-            </Row>
-            <DisplayUserDetails />
-          </Well>
-        </Grid>
+                  }
+                />
+              </form>
+            </Col>
+            <Col xs={3}>
+              {
+                this.props.pending === true ?
+                  <p>Pending...</p> :
+                  null
+              }
+            </Col>
+          </Row>
+          <Row className="additionalInfoRow">
+            <Col className="additionalInfo">
+              {
+                (this.props.alreadyFetchedUser !== '' &&
+                this.props.alreadyFetchedUser === this.state.inputValue) ?
+                  <p>User with login &quot;{this.props.alreadyFetchedUser}&quot;
+                    has been already fetched.</p> :
+                  null
+              }
+            </Col>
+            <Col className="additionalInfo">
+              {
+                this.props.foundStatus === true || this.props.loginInStorage === true ?
+                  <p>Login &quot;{this.state.inputValue}&quot; does not exist.</p> :
+                  null
+              }
+            </Col>
+          </Row>
+          <DisplayUserDetails />
+        </Well>
       </Grid>
     );
   }
