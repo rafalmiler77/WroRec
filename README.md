@@ -1,7 +1,6 @@
 This React project is fetching users on input from Github API 
 and renders some of users details.
-The project is temporarily hosted at:
-http://www.githubapi.piotrowski.nq.pl/
+
 
 The mainView:
  - fetches github users on a given input
